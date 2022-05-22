@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.reTubix.login.mapper.UserRegMapper">
+
+	<select id="userEmailCheck" parameterType="string"
+		resultType="int">
+		select count(*)from member where email=#{email}
+	</select>
+
+
+	<insert id="userRegister" parameterType="Member">
+		insert into member values
+		(#{email:VARCHAR},#{pwd:VARCHAR},#{name:VARCHAR},#{age:VARCHAR},100,null,'noicon.png','nochimg.png',0)
+	</insert>
+</mapper>
