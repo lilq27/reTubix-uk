@@ -41,6 +41,7 @@
 
 <!--찜한 영상-->
 <section id="about" class="two">
+<!-- 
 	<div class="container-fluid cslide" id="">
 		<c:if test="${zzimListSize ne 0}">
 			<h3 align="left" style="color: lavender">${loginUser.name}님이찜한 영상</h3>
@@ -59,7 +60,7 @@
 				</div>
 		</c:if>
 		
-		<!--찜 데이터가 없을 경우 추천영상이 나옴  -->
+		<!--찜 데이터가 없을 경우 추천영상이 나옴  
 		<c:if test="${zzimListSize eq 0}">
 			<h3 align="left" style="color: lavender">${loginUser.name}님을 위한추천 영상</h3>
 				<div id="history"></div>
@@ -77,12 +78,20 @@
 				</div>
 		</c:if>
 	</div>
-
+ -->
 
 	<div class="container-fluid cslide" id="">
 		<h3 align="left" style="color: lavender">코미디 영화2</h3>
 		<div class="row">
 			<ul id="MovieTitle_1" class="content-slider">
+			</ul>
+		</div>
+	</div>
+	
+	<div class="container-fluid cslide" id="">
+		<h3 align="left" style="color: lavender">코미디 영화2</h3>
+		<div class="row">
+			<ul id="MovieTitle_2" class="content-slider">
 			</ul>
 		</div>
 	</div>

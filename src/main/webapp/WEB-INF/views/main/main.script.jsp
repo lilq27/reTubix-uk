@@ -4,43 +4,10 @@
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
 <script>
 $(function() {
-	
-	/** SF */
-	MovieList("MS");
-	
-// 	/** 코미디 */
-// 	MovieList("MC");
-	
-// 	/** 액션 */
-// 	MovieList("MA");
-	
-// 	/** 호러 */
-// 	MovieList("MH");
-	
-// 	/** 로코 */
-// 	MovieList("MR");
-	
-	function MovieList(KeyWord) {
-		$.ajax({
-			url : "${cp}/search/movieList?KeyWord=" + KeyWord,
-			type : "get",
-			dataType : "json",
-			success : function(data) {
-				$.each(data, function(key, value) {
-					
-// 					MovieAPI(value.title);
-// 					console.log(value.title)
-					
-				});
-			}
-		});
-	}
-	
+	/**
 	var movieName = $(".movieTitle").data("title");
 	MovieAPI(movieName);
-	
 	function MovieAPI(movieName) {
-		
 		$.ajax({
 			url : "${cp}/naverAPI/movieList?movieName=" + movieName,
 			type : "get",
@@ -55,33 +22,46 @@ $(function() {
 			}
 		});
 	}
+	*/
 	
-	var imageURL = "https://image.tmdb.org/t/p/w200";
-	$.ajax({
-		url: "${cp}/tredingMovie",
-		type: "get",
-		success: function(data) {
-		$("#SearchReTurn").empty();
-		$.each(data.results, function(key, value) {
-			console.log(value)
-			if(value.poster_path != null) {
-				var image = imageURL + value.poster_path;
-				$("#MovieTitle_1").append(
-						"<li class='col-6 col-lg-2 animate-in-down'>" +
-						"<a href='user/showMovie?id="+ value.id + "'>" +
-						"<img src='" + image + "'class='center-block img-fluid my-3' height='230px' width='158px'>" +
-						"</a></li>"
-				);
+	init();
+	
+	function init() {
+		findImg("tredingMovie", 1);
+		findImg("tredingTV", 2, true);
+// 		findImg("latestMovie", 3);
+// 		findImg("latestTV", 4);
+	}
+	
+	function findImg(url, idKey, isLast) {
+		var imageURL = "https://image.tmdb.org/t/p/w200";
+		$.ajax({
+			url: "${cp}/" + url,
+			type: "get",
+			success: function(data) {
+				console.log(data)
+				$("#SearchReTurn").empty();
+				$.each(data.results, function(key, value) {
+					if(value.poster_path != null) {
+						var image = imageURL + value.poster_path;
+						$("#MovieTitle_" + idKey).append(
+								"<li class='col-6 col-lg-2 animate-in-down'>" +
+								"<a href='user/showMovie?id="+ value.id + "'>" +
+								"<img src='" + image + "'class='center-block img-fluid my-3' height='230px' width='158px'>" +
+								"</a></li>"
+						);
+					}
+				});
+				console.log(isLast);
+				if(isLast) {
+					console.log(idKey);
+					lightSlider();
+				}
 			}
 		});
-		}
-	});
+	}
 	
-	setTimeout(function() {
-		asd();
-	}, 300);
-	
-	function asd() {
+	function lightSlider() {
 		$(".content-slider").lightSlider({
         	item:9,
 	        loop:true,

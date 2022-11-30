@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 
 import com.reTubix.login.domain.MemberVO;
 import com.reTubix.main.domain.NaverApiDto;
-import com.reTubix.main.domain.Trailer_ViewVO;
+import com.reTubix.main.domain.TrailerVO;
 import com.reTubix.main.mapper.MainMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -146,91 +146,91 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public List<Trailer_ViewVO> mainTrailer() {
+	public List<TrailerVO> mainTrailer() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.mainTrailer();
 	}
 	
 	@Override
-	public List<Trailer_ViewVO> MovieList(String KeyWord) {
+	public List<TrailerVO> MovieList(String KeyWord) {
 		// TODO Auto-generated method stub
 		return this.mainMapper.MovieList(KeyWord);
 	}
 
 	@Override
-	public List<Trailer_ViewVO> SF_Movie() {
+	public List<TrailerVO> SF_Movie() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.SF_Movie();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> CO_Movie() {
+	public List<TrailerVO> CO_Movie() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.CO_Movie();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> AC_Movie() {
+	public List<TrailerVO> AC_Movie() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.AC_Movie();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> HO_Movie() {
+	public List<TrailerVO> HO_Movie() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.HO_Movie();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> RO_Movie() {
+	public List<TrailerVO> RO_Movie() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.RO_Movie();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> Drama() {
+	public List<TrailerVO> Drama() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.Drama();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> clickAlign() {
+	public List<TrailerVO> clickAlign() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.clickAlign();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> goodAlign() {
+	public List<TrailerVO> goodAlign() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.goodAlign();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> recommendList() {
+	public List<TrailerVO> recommendList() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.recommendList();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> zzimList(String email) {
+	public List<TrailerVO> zzimList(String email) {
 		// TODO Auto-generated method stub
 		return this.mainMapper.zzimList(email);
 	}
 
 	@Override
-	public List<Trailer_ViewVO> historyList(String email) {
+	public List<TrailerVO> historyList(String email) {
 		// TODO Auto-generated method stub
 		return this.mainMapper.historyList(email);
 	}
 
 	@Override
-	public List<Trailer_ViewVO> onlyMovie() {
+	public List<TrailerVO> onlyMovie() {
 		// TODO Auto-generated method stub
 		return this.mainMapper.onlyMovie();
 	}
 
 	@Override
-	public List<Trailer_ViewVO> searchList(String keyword) {
+	public List<TrailerVO> searchList(String keyword) {
 		// TODO Auto-generated method stub
 		return this.mainMapper.searchList(keyword);
 	}

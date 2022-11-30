@@ -16,66 +16,66 @@
 
 	<select id="mainTrailer" resultType="TrailerView">
 		select * from(
-		select url,idx from trailer_view where click is not null order by click desc
+		select url,idx from trailer where click is not null order by click desc
 		)where rownum<![CDATA[ <= ]]>
 		10
 	</select>
 
 	<select id="MovieList" resultType="TrailerView" parameterType="string">
 		SELECT title, idx 
-		  FROM trailer_view 
+		  FROM trailer 
 		 WHERE idx 
 		  LIKE '%' || #{keyWord} || '%'
 	</select>
 
 	<select id="SF_Movie" resultType="TrailerView">
 		select title,idx from
-		trailer_view where idx like '%MS%'
+		trailer where idx like '%MS%'
 	</select>
 
 	<select id="CO_Movie" resultType="TrailerView">
 		select title,idx from
-		trailer_view where idx like '%MC%'
+		trailer where idx like '%MC%'
 	</select>
 
 	<select id="AC_Movie" resultType="TrailerView">
 		select title,idx from
-		trailer_view where idx like '%MA%'
+		trailer where idx like '%MA%'
 	</select>
 
 	<select id="HO_Movie" resultType="TrailerView">
 		select title,idx from
-		trailer_view where idx like '%MH%'
+		trailer where idx like '%MH%'
 	</select>
 
 	<select id="RO_Movie" resultType="TrailerView">
 		select title,idx from
-		trailer_view where idx like '%MR%'
+		trailer where idx like '%MR%'
 	</select>
 
 	<select id="onlyMovie" resultType="TrailerView">
-		select*from(select title,idx from trailer_view where idx like '%M%')
+		select*from(select title,idx from trailer where idx like '%M%')
 		where ROWNUM <![CDATA[ <= ]]>
 		50
 	</select>
 
 	<select id="Drama" resultType="TrailerView">
-		select title,idx from trailer_view
+		select title,idx from trailer
 		where idx like '%D%'
 	</select>
 
 	<select id="clickAlign" resultType="TrailerView">
 		select title,idx from
-		trailer_view where click is not null order by click desc
+		trailer where click is not null order by click desc
 	</select>
 
 	<select id="goodAlign" resultType="TrailerView">
 		select title,idx from
-		trailer_view where good is not null order by good desc
+		trailer where good is not null order by good desc
 	</select>
 
 	<select id="recommendList" resultType="TrailerView">
-		select*from(select title,idx from trailer_view order by
+		select*from(select title,idx from trailer order by
 		dbms_random.random)
 		where ROWNUM <![CDATA[ <= ]]>
 		20
@@ -83,21 +83,21 @@
 
 	<select id="zzimList" resultType="TrailerView"
 		parameterType="string">
-		select t.title,t.idx from trailer_view t, zzim_trailer z
+		select t.title,t.idx from trailer t, zzim_trailer z
 		where t.idx=z.idx
 		and z.email=#{email}
 	</select>
 
 	<select id="historyList" resultType="TrailerView"
 		parameterType="string">
-		select t.title,t.idx from trailer_view t, history h
+		select t.title,t.idx from trailer t, history h
 		where t.idx=h.idx
 		and h.email=#{email}
 	</select>
 
 	<select id="searchList" resultType="TrailerView"
 		parameterType="string">
-		select title,idx from trailer_view where title like
+		select title,idx from trailer where title like
 		'%'||#{keyword}||'%'
 	</select>
 

@@ -18,13 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.reTubix.common.FindInfoUtil;
 import com.reTubix.main.domain.NaverApiDto;
-import com.reTubix.main.domain.Trailer_ViewVO;
+import com.reTubix.main.domain.TrailerVO;
 import com.reTubix.main.service.MainService;
 
 @Controller
 public class mainController {
 	@Autowired
 	private MainService mainservice;
+	
+	private String apiKey = "44a1e09be53f66de396d8c69acba58c6";
 	
 	FindInfoUtil findInfoUtil = new FindInfoUtil();
 	
@@ -33,23 +35,23 @@ public class mainController {
 	public String main(HttpSession ses, Model m) {
 		String email = (String) ses.getAttribute("email");
 
-		List<Trailer_ViewVO> TrailerList = this.mainservice.mainTrailer();
+		List<TrailerVO> TrailerList = this.mainservice.mainTrailer();
 		
 		
 		
-		List<Trailer_ViewVO> SFMList = this.mainservice.SF_Movie();
-		List<Trailer_ViewVO> COMList = this.mainservice.CO_Movie();
-		List<Trailer_ViewVO> ACMList = this.mainservice.AC_Movie();
-		List<Trailer_ViewVO> HOMList = this.mainservice.HO_Movie();
-		List<Trailer_ViewVO> ROMList = this.mainservice.RO_Movie();
-		List<Trailer_ViewVO> DramaList = this.mainservice.Drama();
-		List<Trailer_ViewVO> ClickList = this.mainservice.clickAlign();
+		List<TrailerVO> SFMList = this.mainservice.SF_Movie();
+		List<TrailerVO> COMList = this.mainservice.CO_Movie();
+		List<TrailerVO> ACMList = this.mainservice.AC_Movie();
+		List<TrailerVO> HOMList = this.mainservice.HO_Movie();
+		List<TrailerVO> ROMList = this.mainservice.RO_Movie();
+		List<TrailerVO> DramaList = this.mainservice.Drama();
+		List<TrailerVO> ClickList = this.mainservice.clickAlign();
 		
-		List<Trailer_ViewVO> goodAlignList = this.mainservice.goodAlign();
-		List<Trailer_ViewVO> recommendList = this.mainservice.recommendList();
+		List<TrailerVO> goodAlignList = this.mainservice.goodAlign();
+		List<TrailerVO> recommendList = this.mainservice.recommendList();
 		
-		List<Trailer_ViewVO> zzimList = this.mainservice.zzimList(email);
-		List<Trailer_ViewVO> historyList = this.mainservice.historyList(email);
+		List<TrailerVO> zzimList = this.mainservice.zzimList(email);
+		List<TrailerVO> historyList = this.mainservice.historyList(email);
 		
 		
 
@@ -89,9 +91,9 @@ public class mainController {
 	
 	@ResponseBody
 	@GetMapping("/search/movieList")
-	public List<Trailer_ViewVO> readMovie(@RequestParam("KeyWord") String keyWord) {
+	public List<TrailerVO> readMovie(@RequestParam("KeyWord") String keyWord) {
 
-		List<Trailer_ViewVO> MovieList = this.mainservice.MovieList(keyWord);
+		List<TrailerVO> MovieList =  mainservice.MovieList(keyWord);
 		
 		return MovieList;
 	}
@@ -107,7 +109,7 @@ public class mainController {
 	@RequestMapping(value = "/tredingMovie", method = RequestMethod.GET, produces = "application/json; charset=utf8")
 	public String MovieTrend() throws IOException {
 		
-		String stringURL = "https://api.themoviedb.org/3/trending/movie/day?api_key=44a1e09be53f66de396d8c69acba58c6";
+		String stringURL = "https://api.themoviedb.org/3/trending/movie/day?api_key=" + apiKey;
 		
 		return findInfoUtil.findInfo(stringURL);
 	}
@@ -116,7 +118,7 @@ public class mainController {
 	@RequestMapping(value = "/tredingTV", method = RequestMethod.GET, produces = "application/json; charset=utf8")
 	public String TVTrend() throws IOException {
 		
-		String stringURL = "https://api.themoviedb.org/3/trending/tv/day?api_key=44a1e09be53f66de396d8c69acba58c6";
+		String stringURL = "https://api.themoviedb.org/3/trending/tv/day?api_key=" + apiKey;
 				
 		return findInfoUtil.findInfo(stringURL);
 	}
@@ -125,7 +127,7 @@ public class mainController {
 	@RequestMapping(value = "/latestMovie", method = RequestMethod.GET, produces = "application/json; charset=utf8")
 	public String latestMovie() throws IOException {
 		
-		String stringURL = "https://api.themoviedb.org/3/movie/latest?api_key=44a1e09be53f66de396d8c69acba58c6&language=ko";
+		String stringURL = "https://api.themoviedb.org/3/movie/latest?api_key=" + apiKey;
 				
 		return findInfoUtil.findInfo(stringURL);
 	}
@@ -134,7 +136,7 @@ public class mainController {
 	@RequestMapping(value = "/latestTV", method = RequestMethod.GET, produces = "application/json; charset=utf8")
 	public String latestTV() throws IOException {
 		
-		String stringURL = "https://api.themoviedb.org/3/tv/latest?api_key=44a1e09be53f66de396d8c69acba58c6&language=ko";
+		String stringURL = "https://api.themoviedb.org/3/tv/latest?api_key=" + apiKey;
 
 
 		return findInfoUtil.findInfo(stringURL);
