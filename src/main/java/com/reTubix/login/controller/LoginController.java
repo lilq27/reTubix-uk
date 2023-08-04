@@ -20,6 +20,12 @@ import com.reTubix.exception.NotUserException;
 import com.reTubix.login.domain.MemberVO;
 import com.reTubix.login.service.UserService;
 import com.reTubix.main.service.MainService;
+import com.zaxxer.hikari.metrics.micrometer.MicrometerMetricsTrackerFactory;
+
+import io.opentelemetry.semconv.trace.attributes.SemanticAttributes.NetHostConnectionSubtypeValues;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import lombok.extern.log4j.Log4j;
 
@@ -83,6 +89,9 @@ public class LoginController {
 
 			ses.setAttribute("email_subs", email_subs);
 		}
+		
+		WebDriver driver = new ChromeDriver();
+		
 		return "redirect:main";
 
 		/*UserServiceImpl 나머지 구현:findUserByUserid()*/
